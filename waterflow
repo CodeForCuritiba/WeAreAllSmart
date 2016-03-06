@@ -1,0 +1,46 @@
+/*
+  AnalogReadSerial
+  Reads an analog input on pin 0, prints the result to the serial monitor.
+  Graphical representation is available using serial plotter (Tools > Serial Plotter menu)
+  Attach the center pin of a potentiometer to pin A0, and the outside pins to +5V and ground.
+
+  This example code is in the public domain.
+*/
+
+
+int ledverde = 9;           // the PWM pin the LED is attached to
+int ledvermelho = 10;           // the PWM pin the LED is attached to
+
+// the setup routine runs once when you press reset:
+void setup() {
+  // initialize serial communication at 9600 bits per second:
+  Serial.begin(9600);
+  pinMode(9, OUTPUT);
+  pinMode(10, OUTPUT);
+}
+
+// the loop routine runs over and over again forever:
+void loop() {
+  // read the input on analog pin 0:
+  int sensorValue = analogRead(A0);
+  // print out the value you read:
+
+if (sensorValue < 500)
+{
+digitalWrite(9, HIGH);
+delay(50);
+digitalWrite(9, LOW);
+delay(50); 
+}
+else
+{
+digitalWrite(10, HIGH);
+delay(50);
+digitalWrite(10, LOW);
+delay(50);   // action B
+}
+  
+  
+  Serial.println(sensorValue);
+  delay(50);        // delay in between reads for stability
+}
